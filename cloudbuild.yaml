@@ -9,7 +9,7 @@ steps:
 - name: gcr.io/cloud-builders/docker
   args: [
    'push', 
-   'gcr.io/$PROJECT_ID/priyanka:$SHORT_SHA'
+   'gcr.io/cloudasset-358015/priyanka:$SHORT_SHA'
   ]
 #step 3
 - name: 'gcr.io/cloud-builders/kubectl'
