@@ -3,7 +3,7 @@ steps:
   args: [
    'build', 
    '-t', 
-   'gcr.io/$PROJECT_ID/priyanka:$SHORT_SHA',
+   'gcr.io/cloudasset-358015/priyanka:$SHORT_SHA',
    '.'
   ]
 - name: gcr.io/cloud-builders/docker
@@ -15,8 +15,8 @@ steps:
 - name: 'gcr.io/cloud-builders/kubectl'
   args: ['apply', '-f', 'k8s/']
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=barath-cluster'
 #step 4
 - name: 'gcr.io/cloud-builders/kubectl'
   args: [
@@ -24,12 +24,12 @@ steps:
    'image', 
    'deployment', 
    'helloweb', 
-   'hello-app=gcr.io/$PROJECT_ID/priyanka:$SHORT_SHA'
+   'hello-app=gcr.io/cloudasset-358015/priyanka:$SHORT_SHA'
   ]
   env:
-  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-a'
-  - 'CLOUDSDK_CONTAINER_CLUSTER=standard-cluster-1'
+  - 'CLOUDSDK_COMPUTE_ZONE=us-central1-c'
+  - 'CLOUDSDK_CONTAINER_CLUSTER=barath-cluster'
 # push images to Google Container Registry with tags
 images: [
-   'gcr.io/$PROJECT_ID/priyanka:$SHORT_SHA'
+   'gcr.io/cloudasset-358015/priyanka:$SHORT_SHA'
   ] 
